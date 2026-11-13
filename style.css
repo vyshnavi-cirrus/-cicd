@@ -1,9 +1,9 @@
+
 /* =========================================
-   SHOPEASE - MODERN LUXURY DESIGN V3
-   Theme: Lavender, Navy & White
+   SHOPEASE - MODERN PREMIUM DESIGN V2
    ========================================= */
 
-/* 1. GLOBAL STYLING */
+/* General Styling */
 * {
     margin: 0;
     padding: 0;
@@ -16,24 +16,24 @@ html {
 }
 
 body {
-    background: #f7f7fc;
-    color: #252642;
+    background: #faf7f0;
+    color: #26352b;
     line-height: 1.6;
 }
 
-/* 2. NAVIGATION BAR */
+/* Navigation */
 header {
-    background: #ffffff;
+    background: #183d2b;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 3px 20px rgba(37, 38, 66, 0.07);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.12);
 }
 
 .navbar {
-    max-width: 1300px;
+    max-width: 1250px;
     margin: auto;
-    padding: 18px 30px;
+    padding: 20px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,82 +42,82 @@ header {
 
 .logo {
     font-size: 30px;
-    font-weight: 900;
-    color: #29264f;
+    font-weight: 800;
+    color: #ffffff;
     letter-spacing: -1px;
 }
 
 .logo span {
-    color: #8265e8;
+    color: #f4a261;
 }
 
 .search {
     display: flex;
     flex: 1;
-    max-width: 430px;
+    max-width: 420px;
 }
 
 .search input {
     width: 100%;
-    padding: 13px 18px;
-    border: 1px solid #e4e1f2;
-    background: #f7f6fc;
-    color: #29264f;
-    border-radius: 12px 0 0 12px;
+    padding: 13px 16px;
+    border: 1px solid #52715e;
+    background: #28543d;
+    color: white;
+    border-radius: 30px 0 0 30px;
     outline: none;
 }
 
-.search input:focus {
-    border-color: #8265e8;
+.search input::placeholder {
+    color: #c4d5c9;
 }
 
-.search input::placeholder {
-    color: #9998ad;
+.search input:focus {
+    border-color: #f4a261;
 }
 
 .search button {
-    background: #8265e8;
-    color: white;
+    background: #f4a261;
+    color: #183d2b;
     border: none;
-    padding: 0 23px;
-    border-radius: 0 12px 12px 0;
-    font-weight: 700;
+    padding: 0 22px;
+    border-radius: 0 30px 30px 0;
+    font-weight: 800;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .search button:hover {
-    background: #6749ce;
+    background: #ffbd83;
 }
 
 .nav-links {
     display: flex;
-    gap: 28px;
+    gap: 25px;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: #45445e;
+    color: #edf5ee;
     font-size: 14px;
-    font-weight: 650;
+    font-weight: 600;
     transition: 0.3s;
 }
 
 .nav-links a:hover {
-    color: #8265e8;
+    color: #f4a261;
 }
 
-/* 3. HERO SECTION */
+/* Hero Section */
 .hero {
-    max-width: 1300px;
-    margin: 35px auto;
-    padding: 75px 65px;
-    background: linear-gradient(120deg, #29264f, #5543a0);
-    border-radius: 28px;
+    max-width: 1250px;
+    margin: 40px auto;
+    padding: 70px 55px;
+    background: linear-gradient(120deg, #183d2b, #39704d);
+    border-radius: 25px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 45px;
+    gap: 40px;
     overflow: hidden;
 }
 
@@ -127,7 +127,7 @@ header {
 
 .offer {
     display: inline-block;
-    color: #d5c6ff;
+    color: #f4a261;
     font-weight: 800;
     letter-spacing: 2px;
     margin-bottom: 20px;
@@ -135,25 +135,25 @@ header {
 }
 
 .hero h1 {
-    font-size: 53px;
+    font-size: 52px;
     line-height: 1.2;
     color: #ffffff;
     margin-bottom: 22px;
 }
 
 .hero-content > p:not(.offer) {
-    color: #dedaf2;
+    color: #d6e5d9;
     line-height: 1.9;
     margin-bottom: 30px;
 }
 
 .shop-btn {
     display: inline-block;
-    padding: 15px 33px;
-    background: #a991ff;
-    color: #29264f;
+    padding: 15px 32px;
+    background: #f4a261;
+    color: #183d2b;
     text-decoration: none;
-    border-radius: 12px;
+    border-radius: 30px;
     font-weight: 800;
     transition: 0.3s;
 }
@@ -169,29 +169,29 @@ header {
 
 .hero-image img {
     width: 100%;
-    height: 350px;
+    height: 340px;
     object-fit: cover;
-    border-radius: 22px;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
 }
 
-/* 4. CATEGORIES */
+/* Categories */
 .categories,
 .products {
-    max-width: 1300px;
+    max-width: 1250px;
     margin: 85px auto;
-    padding: 0 30px;
+    padding: 0 25px;
 }
 
 .categories h2,
 .products h2 {
     font-size: 32px;
-    color: #29264f;
-    font-weight: 850;
+    color: #183d2b;
+    font-weight: 800;
 }
 
 .section-subtitle {
-    color: #9291a8;
+    color: #8b958b;
     margin-top: 8px;
     font-size: 14px;
 }
@@ -205,21 +205,21 @@ header {
 
 .category {
     background: #ffffff;
-    padding: 13px;
+    padding: 12px;
     border-radius: 20px;
     text-align: center;
-    border: 1px solid #eeecf7;
+    border: 1px solid #eee9dd;
     transition: all 0.3s ease;
 }
 
 .category:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(91, 68, 170, 0.12);
+    box-shadow: 0 15px 30px rgba(24, 61, 43, 0.12);
 }
 
 .category img {
     width: 100%;
-    height: 190px;
+    height: 185px;
     object-fit: cover;
     border-radius: 14px;
 }
@@ -227,10 +227,10 @@ header {
 .category h3 {
     padding: 16px 0 10px;
     font-size: 17px;
-    color: #29264f;
+    color: #26352b;
 }
 
-/* 5. PRODUCTS SECTION */
+/* Products */
 .section-heading {
     display: flex;
     justify-content: space-between;
@@ -239,13 +239,13 @@ header {
 
 .section-heading > a {
     text-decoration: none;
-    color: #8265e8;
+    color: #d97736;
     font-weight: 800;
     transition: 0.3s;
 }
 
 .section-heading > a:hover {
-    color: #29264f;
+    color: #183d2b;
 }
 
 .product-grid {
@@ -259,20 +259,20 @@ header {
     background: #ffffff;
     border-radius: 20px;
     overflow: hidden;
-    border: 1px solid #eeecf7;
-    box-shadow: 0 5px 20px rgba(37, 38, 66, 0.04);
+    border: 1px solid #eee9dd;
+    box-shadow: 0 5px 18px rgba(24, 61, 43, 0.05);
     transition: all 0.3s ease;
 }
 
 .product-card:hover {
     transform: translateY(-9px);
-    box-shadow: 0 18px 38px rgba(91, 68, 170, 0.13);
+    box-shadow: 0 16px 35px rgba(24, 61, 43, 0.13);
 }
 
 .product-image {
-    height: 245px;
+    height: 240px;
     position: relative;
-    background: #efedf8;
+    background: #eee9dd;
     overflow: hidden;
 }
 
@@ -291,10 +291,10 @@ header {
     position: absolute;
     top: 14px;
     left: 14px;
-    background: #ff6b81;
+    background: #e76f51;
     color: white;
-    padding: 6px 13px;
-    border-radius: 8px;
+    padding: 6px 12px;
+    border-radius: 20px;
     font-size: 12px;
     font-weight: bold;
     z-index: 1;
@@ -305,7 +305,7 @@ header {
 }
 
 .category-name {
-    color: #8265e8;
+    color: #d97736;
     font-size: 12px;
     font-weight: 800;
     margin-bottom: 8px;
@@ -315,7 +315,7 @@ header {
 
 .product-info h3 {
     font-size: 16px;
-    color: #29264f;
+    color: #26352b;
     margin-bottom: 13px;
 }
 
@@ -327,13 +327,13 @@ header {
 }
 
 .price span {
-    color: #29264f;
-    font-size: 22px;
-    font-weight: 850;
+    color: #183d2b;
+    font-size: 21px;
+    font-weight: 800;
 }
 
 .price del {
-    color: #aaa9bb;
+    color: #a5aaa3;
     font-size: 13px;
 }
 
@@ -341,85 +341,87 @@ header {
     width: 100%;
     padding: 13px;
     border: none;
-    border-radius: 11px;
-    background: #8265e8;
+    border-radius: 30px;
+    background: #183d2b;
     color: white;
-    font-weight: 750;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.3s;
 }
 
 .product-info button:hover {
-    background: #29264f;
+    background: #f4a261;
+    color: #183d2b;
     transform: translateY(-2px);
 }
 
-/* 6. PROMOTIONAL BANNER */
+/* Promotional Banner */
 .promo {
-    max-width: 1250px;
+    max-width: 1200px;
     margin: 85px auto;
-    padding: 75px 40px;
-    border-radius: 28px;
-    background: linear-gradient(120deg, #e5ddff, #c9baff);
-    color: #29264f;
+    padding: 70px 40px;
+    border-radius: 25px;
+    background: linear-gradient(120deg, #d97736, #f4a261);
+    color: #183d2b;
     text-align: center;
 }
 
 .promo p {
-    color: #6652b4;
+    color: #ffffff;
     margin-bottom: 15px;
-    font-weight: 750;
+    font-weight: 700;
 }
 
 .promo h2 {
-    font-size: 38px;
+    font-size: 36px;
     margin-bottom: 15px;
 }
 
 .promo a {
     display: inline-block;
     margin-top: 20px;
-    padding: 14px 32px;
-    background: #29264f;
+    padding: 14px 30px;
+    background: #183d2b;
     color: white;
     text-decoration: none;
-    border-radius: 12px;
+    border-radius: 30px;
     font-weight: 800;
     transition: 0.3s;
 }
 
 .promo a:hover {
-    background: #8265e8;
+    background: #ffffff;
+    color: #183d2b;
     transform: translateY(-3px);
 }
 
-/* 7. FOOTER */
+/* Footer */
 footer {
-    background: #24213f;
+    background: #183d2b;
     color: white;
-    padding: 60px 20px;
+    padding: 55px 20px;
     text-align: center;
 }
 
 footer h2 {
-    color: #a991ff;
+    color: #f4a261;
     margin-bottom: 12px;
-    font-size: 28px;
+    font-size: 27px;
 }
 
 footer p {
-    color: #c6c3dc;
+    color: #c4d5c9;
     font-size: 14px;
 }
 
 .copyright {
     margin-top: 30px;
     padding-top: 20px;
-    border-top: 1px solid #514c70;
+    border-top: 1px solid #52715e;
 }
 
-/* 8. RESPONSIVE DESIGN */
-@media (max-width: 1000px) {
+/* Responsive Design */
+@media (max-width: 900px) {
     .navbar {
         flex-wrap: wrap;
     }
@@ -431,16 +433,16 @@ footer p {
     }
 
     .nav-links {
-        gap: 17px;
+        gap: 15px;
     }
 
     .hero {
         margin: 25px;
-        padding: 40px;
+        padding: 35px;
     }
 
     .hero h1 {
-        font-size: 40px;
+        font-size: 38px;
     }
 
     .product-grid,
@@ -452,42 +454,25 @@ footer p {
 @media (max-width: 600px) {
     .navbar {
         justify-content: center;
-        padding: 18px;
-    }
-
-    .logo {
-        font-size: 27px;
     }
 
     .nav-links {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 14px;
     }
 
     .hero {
         flex-direction: column;
         margin: 15px;
-        padding: 28px;
+        padding: 25px;
     }
 
     .hero h1 {
-        font-size: 33px;
+        font-size: 32px;
     }
 
     .hero-image img {
-        height: 230px;
-    }
-
-    .categories,
-    .products {
-        padding: 0 18px;
-        margin: 60px auto;
-    }
-
-    .categories h2,
-    .products h2 {
-        font-size: 27px;
+        height: 220px;
     }
 
     .product-grid,
@@ -502,33 +487,10 @@ footer p {
 
     .promo {
         margin: 25px 15px;
-        padding: 45px 20px;
+        padding: 40px 20px;
     }
 
     .promo h2 {
-        font-size: 28px;
+        font-size: 27px;
     }
-}
-
-/* 9. SMOOTH ANIMATIONS */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.hero-content,
-.category,
-.product-card {
-    animation: fadeIn 0.7s ease both;
-}
-
-button,
-a {
-    -webkit-tap-highlight-color: transparent;
 }
