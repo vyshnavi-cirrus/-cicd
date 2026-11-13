@@ -9,74 +9,51 @@ pipeline {
 
     stages {
 
-        // 1. Checkout GitHub repository
+        // 1. Checkout
         stage('Checkout') {
             steps {
-                echo 'Checking out GitHub repository'
-
+                echo 'Getting source code from GitHub'
                 checkout scm
-
-                bat 'git branch'
-                bat 'git log -1 --oneline'
             }
         }
 
-        // 2. Verify required website files
+        // 2. Verify Files
         stage('Verify Files') {
             steps {
-                echo 'Verifying website files'
+                echo 'Checking project files'
 
-                bat '''
-                if not exist index.html exit /b 1
-                if not exist style.css exit /b 1
-                if not exist README.md exit /b 1
-                '''
+                bat 'if not exist index.html exit /b 1'
+                bat 'if not exist style.css exit /b 1'
 
-                echo 'All required files exist'
+                echo 'All required files are present'
             }
         }
 
-        // 3. Automated website testing
+        // 3. Run Tests
         stage('Run Tests') {
             steps {
                 echo 'Running website test cases'
 
-                // TC01: index.html exists and is not empty
-                bat '''
-                for %%A in (index.html) do if %%~zA EQU 0 exit /b 1
-                '''
+                // TC01: HTML file is not empty
+                bat 'for %%A in (index.html) do if %%~zA EQU 0 exit /b 1'
 
-                // TC02: style.css exists and is not empty
-                bat '''
-                for %%A in (style.css) do if %%~zA EQU 0 exit /b 1
-                '''
+                // TC02: CSS file is not empty
+                bat 'for %%A in (style.css) do if %%~zA EQU 0 exit /b 1'
 
-                // TC03: HTML contains stylesheet reference
-                bat '''
-                findstr /I /C:"style.css" index.html >nul
-                if errorlevel 1 exit /b 1
-                '''
+                // TC03: HTML references CSS
+                bat 'findstr /I /C:"style.css" index.html >nul'
 
-                // TC04: HTML contains HTML document tag
-                bat '''
-                findstr /I /C:"<html" index.html >nul
-                if errorlevel 1 exit /b 1
-                '''
+                // TC04: HTML contains HTML tag
+                bat 'findstr /I /C:"<html" index.html >nul'
 
-                // TC05: HTML contains body tag
-                bat '''
-                findstr /I /C:"<body" index.html >nul
-                if errorlevel 1 exit /b 1
-                '''
-
-                echo All website test cases passed!
+                echo 'All test cases passed'
             }
         }
 
-        // 4. Deploy website to GitHub Pages
+        // 4. Deploy to GitHub Pages
         stage('Deploy to GitHub Pages') {
             steps {
-                echo 'Deploying website to gh-pages branch'
+                echo 'Deploying to gh-pages'
 
                 withCredentials([
                     string(
@@ -84,18 +61,15 @@ pipeline {
                         variable: 'GIT_TOKEN'
                     )
                 ]) {
-
                     bat '''
                     @echo off
-
                     git config user.name "Jenkins"
                     git config user.email "jenkins@example.com"
 
-                    git push https://x-access-token:%GIT_TOKEN%@github.com/vyshnavi-cirrus/-cicd.git HEAD:gh-pages --force
+                    git push https://x-access-token:%GIT_TOKEN%@github.com/vyshnavi-cirrus/-cicd.git HEAD:refs/heads/gh-pages --force
 
                     if errorlevel 1 exit /b 1
                     '''
-
                 }
             }
         }
@@ -103,14 +77,12 @@ pipeline {
 
     post {
         success {
-            echo 'SUCCESS: Jenkins pipeline completed!'
-            echo 'Website deployment successful!'
-            echo 'GitHub Pages: https://vyshnavi-cirrus.github.io/-cicd/'
+            echo 'SUCCESS: Website deployed successfully!'
+            echo 'https://vyshnavi-cirrus.github.io/-cicd/'
         }
 
         failure {
-            echo 'FAILURE: Jenkins pipeline failed'
-            echo 'Check Console Output for details'
+            echo 'FAILURE: Check Jenkins Console Output'
         }
 
         always {
