@@ -2,21 +2,29 @@
 pipeline {
     agent any
 
+    options {
+        skipDefaultCheckout(true)
+        timestamps()
+    }
+
     stages {
 
-        // 1. Checkout source code
+        // 1. Checkout GitHub repository
         stage('Checkout') {
             steps {
-                echo 'Checking out source code from GitHub'
+                echo 'Checking out GitHub repository'
 
                 checkout scm
+
+                bat 'git branch'
+                bat 'git log -1 --oneline'
             }
         }
 
-        // 2. Verify project files
+        // 2. Verify required website files
         stage('Verify Files') {
             steps {
-                echo 'Checking required project files'
+                echo 'Verifying website files'
 
                 bat '''
                 if not exist index.html exit /b 1
@@ -24,11 +32,11 @@ pipeline {
                 if not exist README.md exit /b 1
                 '''
 
-                echo 'Required files verified successfully'
+                echo 'All required files exist'
             }
         }
 
-        // 3. Run website test cases
+        // 3. Automated website testing
         stage('Run Tests') {
             steps {
                 echo 'Running website test cases'
@@ -43,19 +51,25 @@ pipeline {
                 for %%A in (style.css) do if %%~zA EQU 0 exit /b 1
                 '''
 
-                // TC03: HTML references stylesheet
+                // TC03: HTML contains stylesheet reference
                 bat '''
                 findstr /I /C:"style.css" index.html >nul
                 if errorlevel 1 exit /b 1
                 '''
 
-                // TC04: HTML contains html tag
+                // TC04: HTML contains HTML document tag
                 bat '''
                 findstr /I /C:"<html" index.html >nul
                 if errorlevel 1 exit /b 1
                 '''
 
-                echo All test cases passed successfully!
+                // TC05: HTML contains body tag
+                bat '''
+                findstr /I /C:"<body" index.html >nul
+                if errorlevel 1 exit /b 1
+                '''
+
+                echo All website test cases passed!
             }
         }
 
@@ -72,11 +86,16 @@ pipeline {
                 ]) {
 
                     bat '''
+                    @echo off
+
                     git config user.name "Jenkins"
                     git config user.email "jenkins@example.com"
 
-                    git push https://x-access-token:%GIT_TOKEN%@github.com/vyshnavi-cirrus/-cicd.git HEAD:refs/heads/gh-pages --force
+                    git push https://x-access-token:%GIT_TOKEN%@github.com/vyshnavi-cirrus/-cicd.git HEAD:gh-pages --force
+
+                    if errorlevel 1 exit /b 1
                     '''
+
                 }
             }
         }
@@ -84,16 +103,18 @@ pipeline {
 
     post {
         success {
-            echo 'SUCCESS: Website deployed to GitHub Pages!'
-            echo 'Repository: https://github.com/vyshnavi-cirrus/-cicd'
+            echo 'SUCCESS: Jenkins pipeline completed!'
+            echo 'Website deployment successful!'
+            echo 'GitHub Pages: https://vyshnavi-cirrus.github.io/-cicd/'
         }
 
         failure {
-            echo 'FAILED: Check Jenkins Console Output'
+            echo 'FAILURE: Jenkins pipeline failed'
+            echo 'Check Console Output for details'
         }
 
         always {
-            echo 'Jenkins pipeline execution completed'
+            echo 'Pipeline execution completed'
         }
     }
 }
